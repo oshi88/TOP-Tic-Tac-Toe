@@ -17,7 +17,6 @@
     background-color: brown;
     display: flex;
     flex-wrap: wrap;
-    
 }
 
 .tile{
@@ -25,9 +24,15 @@
     height: 33.33%;
     background-color: aqua;
     border: 1px solid black;
-    color: cadetblue;
+    color: rgb(26, 26, 26);
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     cursor: pointer;
+    font-family: roboto;
+    font-weight: bold;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
 }
