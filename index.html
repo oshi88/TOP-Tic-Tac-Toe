@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!--div id="plyrSelection">
-        <div class="label">Choose your Weapon</div>
-
-    <div><button id="X_btn" onclick='playerSelection("X")'>X</button>
-        <button id="O_btn" onclick='playerSelection("O")'>O</button></div>
-    </div-->
+    <div class="title">
+        <h1>TIC TAC TOE</h1>
+    </div>
+    <div class="player">
+        <h3>You vs Computer</h3>
+    </div>
     <div class="gameBoardContainer" id="gameBoardContainer">
         <div class="gameBoard" id="gameBoard">
            <div class="tile" data-index="0"></div>
@@ -29,6 +29,8 @@
     </div>
     <div class="messageContainer">
         <div id="message">...</div>
+        <button onclick="location.reload()">Restart</button>
+        
     </div>
     <script src="script.js"></script>
 </body>

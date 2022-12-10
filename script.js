@@ -78,10 +78,10 @@ const gameControl = (() => {
         
         if(winnerCheck(tileIndex)){
             if(currentPlayerSign() === "O"){
-                displayControl.updateMessage("O won");
+                displayControl.updateMessage("Computer Won");
             }
             if(currentPlayerSign() === "X"){
-                displayControl.updateMessage("X won");
+                displayControl.updateMessage("You Won");
             }
             
             gameOver = true;
