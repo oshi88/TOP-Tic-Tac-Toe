@@ -10,7 +10,7 @@
     align-items: center;
 }
 body{
-    background-color: rgb(102, 67, 134);
+    background-color: rgb(48, 47, 0);
 }
 .gameBoard{
     width: 300px;
@@ -23,7 +23,7 @@ body{
 .tile{
     width: 33.33%;
     height: 33.33%;
-    background-color: aqua;
+    background-color: rgb(0, 110, 110);
     border: 1px solid black;
     color: rgb(26, 26, 26);
     box-sizing: border-box;
@@ -44,4 +44,11 @@ body{
     color: aliceblue;
     font-family: roboto;
     font-weight: bold;
+}
+
+#plyrSelection{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }

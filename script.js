@@ -8,6 +8,21 @@ const Player = (sign) => {
     return {signGet};
 };
 
+let player1 = Player("X");
+let player2 = Player("O");
+/*const playerSelection =(selection)=>{
+    if(selection==="X"){
+        player1 = Player("X");
+        player2 = Player("O");
+        return;
+    }
+    if(selection==="O"){
+        player1 = Player("O");
+        player2 = Player("X");
+        return;
+    }return
+}*/
+
 const gameBoard = (()=>{
     const gameBoardArr = ["","","","","","","","","",];
 
@@ -19,7 +34,15 @@ const gameBoard = (()=>{
     const getSign = (index) =>{
         return gameBoardArr[index];
     }
-return {setSign,getSign};
+
+    const emptyString = () =>{
+        const indexArray = [];
+        gameBoardArr.forEach((item,index) =>{if(item===""){
+            indexArray.push(index);
+        }} )
+        return indexArray;
+    }
+return {setSign,getSign,emptyString};
 
 })();
 
@@ -30,14 +53,25 @@ const displayControl = (() => {
     divTile.forEach((tile) =>
     tile.addEventListener("click", (e) =>{
         if(gameControl.isOver() || divTile[e.target.dataset.index].innerText !== "")return
-            gameControl.playRound(parseInt(e.target.dataset.index));
+            gameControl.playRound(parseInt(e.target.dataset.index),"X");
             updateGameBoard();
+            console.log(gameBoard.emptyString());
     }));
     const updateGameBoard = () => {
+       
+        const emptyIndex = gameBoard.emptyString();
+        let randomIndex = emptyIndex[Math.floor(Math.random()*emptyIndex.length)]
+        if(gameControl.rounDs()<9){
+            gameControl.playRound(randomIndex,"O");
+        }
+        
+       
+
         for(let i=0;i<divTile.length;i++){
             divTile[i].innerText = gameBoard.getSign(i);
         }
     }
+
 
     const updateMessage = (message) =>{
         const container = document.getElementById('message');
@@ -49,13 +83,11 @@ const displayControl = (() => {
 
 const gameControl = (() => {
 
-    const playerX = Player("X");
-    const playerO = Player("O");
     let round = 1;
     let gameOver = false;
-    const playRound = (tileIndex) =>{
-        gameBoard.setSign(tileIndex,currentPlayerSign());
-        console.table(winnerCheck(tileIndex));
+    const playRound = (tileIndex,sign) =>{
+        gameBoard.setSign(tileIndex,sign);
+        
         if(winnerCheck(tileIndex)){
             if(currentPlayerSign() === "O"){
                 displayControl.updateMessage("O won");
@@ -63,6 +95,7 @@ const gameControl = (() => {
             if(currentPlayerSign() === "X"){
                 displayControl.updateMessage("X won");
             }
+            
             gameOver = true;
             return
         }
@@ -74,7 +107,7 @@ const gameControl = (() => {
         round++;
     }
     const currentPlayerSign = () =>{
-        return round % 2 === 1? playerX.signGet() : playerO.signGet()
+        return round % 2 === 1? "X" : "O"
     }
     const winnerCheck = (tileIndex) => {
         const winConditions = 
@@ -94,7 +127,11 @@ const gameControl = (() => {
     const isOver = () => {
         return gameOver;
     }
-        return{playRound,isOver}
+    const rounDs = ()=>{
+        return round;
+    }
+        return{playRound,isOver,rounDs,winnerCheck}
 })();
 
 console.clear();
+
