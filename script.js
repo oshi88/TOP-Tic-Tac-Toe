@@ -1,6 +1,6 @@
 'use strict';
 
-const Player = (sign) => {
+/*const Player = (sign) => {
     this.sign = sign;
     const signGet = () =>{
         return sign;
@@ -9,19 +9,7 @@ const Player = (sign) => {
 };
 
 let player1 = Player("X");
-let player2 = Player("O");
-/*const playerSelection =(selection)=>{
-    if(selection==="X"){
-        player1 = Player("X");
-        player2 = Player("O");
-        return;
-    }
-    if(selection==="O"){
-        player1 = Player("O");
-        player2 = Player("X");
-        return;
-    }return
-}*/
+let player2 = Player("O");*/
 
 const gameBoard = (()=>{
     const gameBoardArr = ["","","","","","","","","",];
